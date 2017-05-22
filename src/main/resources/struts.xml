@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    <struts>
+    <package name="default" extends="struts-default" namespace="/"  >
+    </package>
+    <package name="ssh" extends="default" namespace="/"  >
+    <action name="employee_login" method="login" class="employeeAction" >
+    <result name="success">/frame.jsp</result>
+    <result name="failure">/index.jsp</result>
+    </action>
+    <action name="employee_findAll" class="employeeAction" method="findAll">
+    <result name="findAllSuccess">/frame/listEmployee.jsp</result>
+    </action>
+ 
+     <action name="employee_save" class="employeeAction" method="save">
+    <result name="saveSuccess" >/frame/addEmployee.jsp</result>
+    </action>
+ 
+     <action name="employee_add" class="employeeAction" method="add">
+    <result name="addSuccess" type="redirectAction" >employee_findAll</result>
+    <result>/index.jsp</result>
+    </action>
+      <action name="employee_edit" class="employeeAction" method="edit">
+    <result name="editSuccess">frame/editEmployee.jsp</result>
+    </action>
+       <action name="employee_update" class="employeeAction" method="update">
+    <result name="updateSuccess" type="redirectAction" >employee_findAll</result>
+    </action>
+       <action name="employee_delete" class="employeeAction" method="delete">
+    <result name="deleteSuccess" type="redirectAction" >employee_findAll</result>
+    </action>
+    
+    <action name="department_findAll" method="findAll" class="departmentAction">
+    <result name="success">/frame/listDep.jsp</result>
+    </action>
+    <action name="department_save" method="save" class="departmentAction">
+    <result name="success" type="redirectAction">department_findAll.action</result>
+    </action>
+     <action name="department_edit" method="edit" class="departmentAction">
+    <result name="success" >/frame/edit.jsp</result>
+    </action>
+       <action name="department_update" method="update" class="departmentAction">
+    <result name="success" type="redirectAction">department_findAll.action</result>
+    </action>
+    <action name="department_delete" method="delete" class="departmentAction">
+    <result name="success" type="redirectAction">department_findAll.action</result>
+    </action>
+    </package>
+    
+    
+    </struts>
